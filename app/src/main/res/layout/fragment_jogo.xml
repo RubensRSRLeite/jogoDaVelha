@@ -76,6 +76,9 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintTop_toBottomOf="@id/linear2">
 
         <TableRow
@@ -88,21 +91,59 @@
                 android:id="@+id/bt_00"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
+
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+
+                android:background="@color/pink_700"
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                app:layout_constraintBottom_toTopOf="@id/linear2">
+
+            </LinearLayout>
 
             <Button android:id="@+id/bt_01"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+
+                android:background="@color/pink_700"
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                app:layout_constraintBottom_toTopOf="@id/linear2">
+
+            </LinearLayout>
 
             <Button android:id="@+id/bt_02"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
         </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+
+            android:background="@color/pink_700"
+            app:layout_constraintTop_toBottomOf="@id/linear1"
+            app:layout_constraintBottom_toTopOf="@id/linear2">
+
+        </LinearLayout>
 
         <TableRow
             android:layout_width="match_parent"
@@ -114,21 +155,58 @@
                 android:id="@+id/bt_10"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:layout_margin="5dp"></Button>
+                android:backgroundTint="@color/teal_200"
+                android:textColor="@color/pink_200"
+                android:textSize="100dp"></Button>
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+
+                android:background="@color/pink_700"
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                app:layout_constraintBottom_toTopOf="@id/linear2">
+
+            </LinearLayout>
 
             <Button android:id="@+id/bt_11"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+
+                android:background="@color/pink_700"
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                app:layout_constraintBottom_toTopOf="@id/linear2">
+
+            </LinearLayout>
 
             <Button android:id="@+id/bt_12"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
         </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+
+            android:background="@color/pink_700"
+            app:layout_constraintTop_toBottomOf="@id/linear1"
+            app:layout_constraintBottom_toTopOf="@id/linear2">
+
+        </LinearLayout>
 
         <TableRow
             android:layout_width="match_parent"
@@ -140,18 +218,45 @@
                 android:id="@+id/bt_20"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+
+                android:background="@color/pink_700"
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                app:layout_constraintBottom_toTopOf="@id/linear2">
+
+            </LinearLayout>
 
             <Button android:id="@+id/bt_21"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+
+                android:background="@color/pink_700"
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                app:layout_constraintBottom_toTopOf="@id/linear2">
+
+            </LinearLayout>
 
             <Button android:id="@+id/bt_22"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:textColor="@color/pink_200"
+                android:backgroundTint="@color/teal_200"
+                android:textSize="100dp"
                 android:layout_weight="1"
                 android:layout_margin="5dp"></Button>
         </TableRow>

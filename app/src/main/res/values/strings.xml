@@ -3,7 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="jogador_1">Jogador 1</string>
-    <string name="jogador_2">Jogador 2</string>
+    <string name="jogador_1">Jogador 1 (X)</string>
+    <string name="jogador_2">Jogador 2 (O)</string>
     <string name="zero">0</string>
+    <string name="parabens"> Parabens, você venceu!!! :D</string>
+    <string name="velha">Deu velha :P</string>
 </resources>
