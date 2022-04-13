@@ -1,12 +1,20 @@
 package br.senai.sp.cotia.tictactoeapp.fragment;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,7 +25,9 @@ import java.util.Random;
 import java.util.zip.Inflater;
 
 import br.senai.sp.cotia.tictactoeapp.R;
+import br.senai.sp.cotia.tictactoeapp.databinding.FragmentInicioBinding;
 import br.senai.sp.cotia.tictactoeapp.databinding.FragmentJogoBinding;
+import br.senai.sp.cotia.tictactoeapp.util.PrefsUtil;
 
 
 public class jogoFragment extends Fragment {
@@ -29,18 +39,31 @@ public class jogoFragment extends Fragment {
     //matris de string do tabuleiro
     private String[][] tabuleiro;
     //variaveis para simbolos
-    private String simbJog1, simbJog2, simbolo;
+    private String simbJog1, simbJog2, nome1, nome2, simbolo;
     private Random random;
     // variavel para numero de jogadas
     private int numJog= 0;
+    // variaveis para placar
+    private int placarJog1 = 0, placarJog2 = 0, placarJog3 = 0;
+
+    public void onStart() {
+        super.onStart();
+        //pega a referencia para activity
+        AppCompatActivity minhaActivity = (AppCompatActivity) getActivity();
+        minhaActivity.getSupportActionBar().show();
+        minhaActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
 
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // chama binding
+
+        //habilitar menu
+        setHasOptionsMenu(true);
 
         binding = FragmentJogoBinding.inflate(inflater, container, false);
 
@@ -78,8 +101,18 @@ public class jogoFragment extends Fragment {
 
 
         //define simbolos do jogador1 e jogador2
-        simbJog1="X";
-        simbJog2="O";
+        simbJog1= PrefsUtil.getSimboloJog1(getContext());
+        simbJog2= PrefsUtil.getSimboloJog2(getContext());
+
+        simbJog1 = PrefsUtil.getSimboloJog1(getContext());
+        simbJog2 = PrefsUtil.getSimboloJog2(getContext());
+        nome1 = PrefsUtil.getNomeJog1(getContext());
+        nome2 = PrefsUtil.getNomeJog2(getContext());
+
+        binding.jogador1.setText(getResources().getString(R.string.jogador_1,simbJog1, nome1));
+        binding.jogador2.setText(getResources().getString(R.string.jogador_2,simbJog2, nome2));
+
+        //define nome do jogador 1 e jogador 2
 
 
         random = new Random();
@@ -89,6 +122,12 @@ public class jogoFragment extends Fragment {
 
         //retorna root da binding
         return binding.getRoot();
+    }
+
+    private void atualizaPlacar() {
+        binding.placar1.setText(placarJog1+"");
+        binding.placar2.setText(placarJog2+"");
+        binding.placar3.setText(placarJog3+"");
     }
 
     private void sorteia() {
@@ -136,6 +175,8 @@ public class jogoFragment extends Fragment {
 
     }
 
+
+
     public void limpar(){
         //limpar o visual dos botoes
         for (Button bt : botoes) {
@@ -153,8 +194,64 @@ public class jogoFragment extends Fragment {
         for (String[] vetor : tabuleiro) {
             Arrays.fill(vetor, " ");
         }
+
+
+
         //zerar jogadas
         numJog = 0;
+        sorteia();
+        atualizaVez();
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //verifica qual item foi selecionado
+
+        switch (item.getItemId()){
+            case R.id.menu_rezetar:
+                AlertDialog.Builder alerta = new AlertDialog.Builder(getContext());
+                alerta.setTitle(getResources().getString(R.string.dialogo_rezet));
+                alerta.setMessage("caso deseja rezetar, clique em rezet").setCancelable(false)
+                        .setPositiveButton("rezet", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                placarJog1=0;
+                                placarJog2=0;
+                                placarJog3=0;
+                                atualizaPlacar();
+                                limpar();
+                            }
+                        });
+                alerta.setMessage("caso deseja rezetar, clique em rezet").setCancelable(false)
+                        .setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+
+                AlertDialog alertDialog = alerta.create();
+                alertDialog.show();
+
+
+                break;
+            case R.id.menu_inicio:
+
+                    NavHostFragment.findNavController(jogoFragment.this).navigate(R.id.action_jogoFragment_to_inicioFragment);
+
+
+            case R.id.menu_pref:
+                NavHostFragment.findNavController(jogoFragment.this).navigate(R.id.action_jogoFragment_to_prefFragment);
+        }
+
+        return true;
     }
 
     //testa velha
@@ -185,13 +282,26 @@ public class jogoFragment extends Fragment {
         if(numJog>=5 && venceu()){
             //informa que houve um vencedor
             Toast.makeText(getContext(), R.string.parabens, Toast.LENGTH_LONG).show();
+
+            //verifica quem venceu
+            if(simbolo.equals(simbJog1)){
+                placarJog1++;
+            } else {
+                placarJog2++;
+            }
+
+            atualizaPlacar();
+
             limpar();
         } else if (numJog == 9 && venceu() != true){
             Toast.makeText(getContext(), R.string.velha, Toast.LENGTH_LONG).show();
+            placarJog3++;
+            atualizaPlacar();
             limpar();
         } else {
             simbolo = simbolo.equals(simbJog1) ? simbJog2 : simbJog1;
             atualizaVez();
         }
+
     };
 }

@@ -3,9 +3,25 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="jogador_1">Jogador 1 (X)</string>
-    <string name="jogador_2">Jogador 2 (O)</string>
+    <string name="jogador_1">%2$s (%1$s)</string>
+    <string name="jogador_2">%2$s (%1$s)</string>
+    <string name="jogador_3">velha </string>
     <string name="zero">0</string>
     <string name="parabens"> Parabens, você venceu!!! :D</string>
     <string name="velha">Deu velha :P</string>
+    <string name="rezetar">Rezetar o placar</string>
+    <string name="inicio">Voltar a tela inicial</string>
+    <string name="preferencias">Preferências</string>
+    <string name="simb_jog1">Simbolo jogador 1</string>
+    <string name="simb_jog2">Simbolo jogador 2</string>
+    <string name="summary_jog1">Escolha o Simbolo jogador 1</string>
+    <string name="summary_jog2">Escolha o Simbolo jogador 2</string>
+    <string name="nome1">Nome do jogador 1</string>
+    <string name="nome2">Nome do jogador 2</string>
+    <string name="summary_nome1">Digite o Simbolo jogador 1</string>
+    <string name="summary_nome2">Digite o Simbolo jogador 2</string>
+    <string name="dialogo_rezet">Deseja rezetar seu jogo da velha? </string>
+    <string name="cancelar">Cancelar </string>
+    <string name="rezet"> Rezetar </string>
+
 </resources>
